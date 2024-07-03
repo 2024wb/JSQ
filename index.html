@@ -1,248 +1,132 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8" />
-  <title>计算器</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-    table {
-      border-collapse: collapse;
-      border: 2px solid #ccc;
-      background-color: #fff;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    td {
-      padding: 0;
-    }
-    button {
-      width: 60px;
-      height: 60px;
-      font-size: 20px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      background-color: #f0f0f0;
-      color: #333;
-      cursor: pointer;
-      transition: background-color 0.2s ease;
-      box-sizing: border-box;
-    }
-    button:hover {
-      background-color: #ddd;
-    }
-    button:active {
-      background-color: #ccc;
-    }
-    #int {
-      font-size: 32px;
-      background-color: #e0e0e0;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      padding: 15px;
-      text-align: right;
-      box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
-      box-sizing: border-box;
-    }
-    .operator {
-      background-color: #ff9f00;
-      color: white;
-    }
-    .operator:hover {
-      background-color: #e08b00;
-    }
-    .operator:active {
-      background-color: #d07d00;
-    }
-    .special {
-      background-color: #f44;
-      color: white;
-    }
-    .special:hover {
-      background-color: #d33;
-    }
-    .special:active {
-      background-color: #c22;
-    }
-    .button-left, .button-right {
-      width: 60px;
-      font-size: 24px;
-    }
-  </style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>这是一个计算器</title>
+<style>
+.button{
+	width:50px;
+	height:50px;
+	background-color: #f2f2f2;
+}
+
+table{
+    background-color:#9CF;
+	  border: 2px solid black;
+	}
+body{
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+.text{
+  width:300px;
+  height:50px;
+  background:#333;
+  color: white; 
+  text-align: right;
+}
+.text1{
+  width:300px;
+  height:50px;
+  background:#333;
+  color: white; 
+  margin-top: -5px;
+  text-align: right;
+}
+</style>
 </head>
 <body>
 <table>
   <tr>
-    <td colspan="5"><p id="int">0</p></td>
+    <td colspan="5"><input type="text" class="text"></td>
   </tr>
-  <tr align="center">
-    <td><button class="special" onclick="buttonClick('NEW')">NE</button></td>
-    <td><button class="special" onclick="buttonClick('CE')">CE</button></td>
-    <td><button class="special" onclick="buttonClick('C')">C</button></td>
-    <td><button class="operator" onclick="buttonClick('%')">%</button></td>
-    <td><button class="operator" onclick="buttonClick('/')">/</button></td>
+  <tr>
+    <td colspan="5"><input type="text" class="text text1"></td>
   </tr>
-  <tr align="center">
-    <td><button class="operator" onclick="buttonClick('**3')">X³</button></td>
-    <td><button onclick="buttonClick('7')">7</button></td>
-    <td><button onclick="buttonClick('8')">8</button></td>
-    <td><button onclick="buttonClick('9')">9</button></td>
-    <td><button class="operator" onclick="buttonClick('*')">*</button></td>
+  <tr>
+    <td><input type="button" value="sin" class="button"></td>
+    <td><input type="button" value="cos" class="button"></td>
+    <td><input type="button" value="tan" class="button"></td>
+    <td><input type="button" value="清除" class="button"></td>
+    <td><input type="button" value="/" class="button"></td>
   </tr>
-  <tr align="center">
-    <td><button class="operator" onclick="buttonClick('**2')">X²</button></td>
-    <td><button onclick="buttonClick('4')">4</button></td>
-    <td><button onclick="buttonClick('5')">5</button></td>
-    <td><button onclick="buttonClick('6')">6</button></td>
-    <td><button class="operator" onclick="buttonClick('-')">-</button></td>
+  <tr>
+    <td><input type="button" value="C" class="button"></td>
+    <td><input type="button" value="7" class="button"></td>
+    <td><input type="button" value="8" class="button"></td>
+    <td><input type="button" value="9" class="button"></td>
+    <td><input type="button" value="*" class="button"></td>
   </tr>
-  <tr align="center">
-    <td><button class="special" onclick="buttonClick('±')">±</button></td>
-    <td><button onclick="buttonClick('1')">1</button></td>
-    <td><button onclick="buttonClick('2')">2</button></td>
-    <td><button onclick="buttonClick('3')">3</button></td>
-    <td><button class="operator" onclick="buttonClick('+')">+</button></td>
+  <tr>
+    <td><input type="button" value="阶乘" class="button"></td>
+    <td><input type="button" value="4" class="button"></td>
+    <td><input type="button" value="5" class="button"></td>
+    <td><input type="button" value="6" class="button"></td>
+    <td><input type="button" value="-" class="button"></td>
   </tr>
-  <tr align="center">
-    <td><button class="button-left" onclick="buttonClick('(')">(</button></td>
-    <td><button class="button-right" onclick="buttonClick(')')">)</button></td>
-    <td><button onclick="buttonClick('0')">0</button></td>
-    <td><button onclick="buttonClick('.')">.</button></td>
-    <td><button class="operator" onclick="calculate()">=</button></td>
+  <tr>
+    <td><input type="button" value="平方" class="button"></td>
+    <td><input type="button" value="1" class="button"></td>
+    <td><input type="button" value="2" class="button"></td>
+    <td><input type="button" value="3" class="button"></td>
+    <td><input type="button" value="+" class="button"></td>
+  </tr>
+  <tr>
+    <td><input type="button" value="(" class="button"></td>
+    <td><input type="button" value=")" class="button"></td>
+    <td><input type="button" value="0" class="button"></td>
+    <td><input type="button" value="." class="button"></td>
+    <td><input type="button" value="=" class="button"></td>
   </tr>
 </table>
 <script>
-var isResultShown = false; // 标记是否显示了计算结果
-var lastClickedValue = ''; // 保存最后点击的按钮值
-
-function buttonClick(value) {
-  lastClickedValue = value; // 更新最后点击的按钮值
-  if (value === 'CE') {
-    clearDisplay(); // 清空显示屏
-  } else if (value === 'C') {
-    clearAll(); // 清除所有内容
-  } else if (value === '±') {
-    changeSign(); // 改变符号（正负号）
-  } else {
-    addToDisplay(value); // 添加内容到显示屏
-  }
-}
-
-function addToDisplay(value) {
-  var display = document.getElementById('int');
-  var currentValue = display.textContent.trim();
-  
-  // 如果当前显示结果，点击数字时重置显示内容
-  if (isResultShown && !isNaN(value)) {
-    display.textContent = '';
-    isResultShown = false;
-  } else if (isResultShown && isNaN(value)) {
-    isResultShown = false;
-  }
-
-  // 检查当前值是否为运算符
-  var isSymbol = ['+', '-', '*', '/', '%'].includes(value);
-  var lastChar = currentValue[currentValue.length - 1];
-  var lastIsSymbol = ['+', '-', '*', '/', '%'].includes(lastChar);
-
-  // 如果上一个字符是运算符，不允许连续运算符
-  if (isSymbol && lastIsSymbol) {
-    return;
-  }
-  
-  // 如果当前值为小数点且已经有小数点，不允许重复小数点
-  if (value === '.' && currentValue.includes('.')) {
-    return;
-  }
-
-  // 如果点击的是 'NEW'，生成随机表达式
-  if (value === 'NEW') {
-    var symbols = ['+', '-', '*', '/'];
-    var maxNumber = 100; // 最大的随机数范围
-    var expression = '';
-
-    for (var i = 0; i < 3; i++) {
-      if (i > 0) {
-        expression += symbols[Math.floor(Math.random() * symbols.length)];
+const buttons = document.querySelectorAll('.button');
+const inputText = document.querySelector('.text');
+const outputText = document.querySelector('.text1');
+buttons.forEach(button => {
+  button.addEventListener('click', () => {
+    const value = button.value;
+    if (value === '=') {
+      try {
+        const result = eval(inputText.value);
+        outputText.value = result;
+      } catch (error) {
+        outputText.value = '错误的表达式';
       }
-      expression += Math.floor(Math.random() * maxNumber);
-    }
-
-    display.textContent = expression;
-  } else if (currentValue === '0' && value !== '.' && value !== '(' && !isSymbol) {
-    display.textContent = value; // 如果当前值是0且点击的不是小数点、左括号或运算符，则替换0
-  } else {
-    if (!isResultShown || isNaN(value)) {
-      display.textContent += value; // 添加内容到显示屏
+    } else if (value === '清除') {
+      inputText.value = '';
+      outputText.value = '';
+    } else if (value === 'C') {
+      inputText.value = inputText.value.slice(0, -1); 
+      outputText.value = '';
+    } else if (value === '平方') {
+      const result = Math.pow(parseFloat(inputText.value),2);
+      outputText.value = result;
+    } else if (value === '阶乘') {
+      const num = parseInt(inputText.value);
+      let result = 1;
+      for (let i = 1; i <= num; i++) {
+        result *= i;
+      }
+      outputText.value = result;
+    } else if (value === 'sin') {
+      const result = Math.sin(parseFloat(inputText.value) * Math.PI / 180); 
+      outputText.value = result;
+    } else if (value === 'cos') {
+      const result = Math.cos(parseFloat(inputText.value) * Math.PI / 180); 
+      outputText.value = result;
+    } else if (value === 'tan') {
+      const result = Math.tan(parseFloat(inputText.value) * Math.PI / 180); 
+      outputText.value = result;
     } else {
-      display.textContent = value; // 如果结果已经显示，则用新值替换内容
-      isResultShown = false;
+      inputText.value += value;
     }
-  }
-}
-
-function clearDisplay() {
-  document.getElementById('int').textContent = '0'; // 清空显示屏，设置为0
-}
-
-function clearAll() {
-  var display = document.getElementById('int');
-  var currentValue = display.textContent.trim();
-
-  // 实现点击 C 去减去输出的最后一个字符
-  if (currentValue.length > 0) {
-    display.textContent = currentValue.slice(0, -1);
-  }
-
-  if (display.textContent === '') {
-    display.textContent = '0'; // 如果内容为空，设置为0
-  }
-  isResultShown = false;
-}
-
-function changeSign() {
-  var display = document.getElementById('int');
-  var currentValue = display.textContent.trim();
-  if (currentValue[0] === '-') {
-    display.textContent = currentValue.substring(1); // 移除负号
-  } else if (currentValue !== '0') {
-    display.textContent = '-' + currentValue; // 添加负号
-  }
-}
-
-function calculate() {
-  var display = document.getElementById('int');
-  var expression = display.textContent;
-
-  // 将百分号替换为乘以0.01以进行计算
-  expression = expression.replace(/%/g, '*0.01');
-
-  try {
-    // 计算表达式
-    var result = eval(expression);
-    
-    // 如果结果已经显示，处理这种情况
-    if (isResultShown && !isNaN(lastClickedValue)) {
-            // 如果最后点击的值是数字，则将其转为浮点数
-            var lastValue = parseFloat(lastClickedValue);
-      if (!isNaN(lastValue)) {
-        // 将结果与最后一个数字相加
-        result = parseFloat(result) + lastValue;
-      }
-    }
-
-    display.textContent = result; // 显示计算结果
-    isResultShown = true; // 设置结果已显示标志
-  } catch (error) {
-    display.textContent = 'Error'; // 如果发生错误，显示 'Error'
-  }
-}
+  });
+});
 </script>
 </body>
 </html>
