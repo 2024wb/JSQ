@@ -84,46 +84,66 @@ body{
   </tr>
 </table>
 <script>
-const buttons = document.querySelectorAll('.button');
-const inputText = document.querySelector('.text');
-const outputText = document.querySelector('.text1');
+// 选择所有按钮和文本输入字段
+const buttons = document.querySelectorAll('.button'); // 获取所有按钮
+const inputText = document.querySelector('.text'); // 获取第一个文本输入框
+const outputText = document.querySelector('.text1'); // 获取第二个文本输入框
+
+// 为每个按钮添加点击事件监听器
 buttons.forEach(button => {
   button.addEventListener('click', () => {
-    const value = button.value;
+    const value = button.value; // 获取按钮的值
+    // 当点击 '=' 按钮时计算结果
     if (value === '=') {
       try {
-        const result = eval(inputText.value);
-        outputText.value = result;
+        const result = eval(inputText.value); // 使用eval计算表达式结果
+        outputText.value = result; // 显示计算结果
       } catch (error) {
-        outputText.value = '错误的表达式';
+        outputText.value = '错误的表达式'; // 显示错误信息，如果表达式无效
       }
-    } else if (value === '清除') {
-      inputText.value = '';
-      outputText.value = '';
-    } else if (value === 'C') {
-      inputText.value = inputText.value.slice(0, -1); 
-      outputText.value = '';
-    } else if (value === '平方') {
-      const result = Math.pow(parseFloat(inputText.value),2);
-      outputText.value = result;
-    } else if (value === '阶乘') {
-      const num = parseInt(inputText.value);
+    } 
+    // 当点击 '清除' 按钮时清空输入和输出字段
+    else if (value === '清除') {
+      inputText.value = ''; // 清空输入字段
+      outputText.value = ''; // 清空输出字段
+    } 
+    // 当点击 'C' 按钮时从输入字段中删除最后一个字符
+    else if (value === 'C') {
+      inputText.value = inputText.value.slice(0, -1); // 删除最后一个字符
+      outputText.value = ''; // 清空输出字段
+    } 
+    // 当点击 '平方' 按钮时计算输入值的平方
+    else if (value === '平方') {
+      const result = Math.pow(parseFloat(inputText.value), 2); // 计算平方
+      outputText.value = result; // 显示计算结果
+    } 
+    // 当点击 '阶乘' 按钮时计算输入值的阶乘
+    else if (value === '阶乘') {
+      const num = parseInt(inputText.value); // 解析输入值为整数
       let result = 1;
       for (let i = 1; i <= num; i++) {
-        result *= i;
+        result *= i; // 计算阶乘
       }
-      outputText.value = result;
-    } else if (value === 'sin') {
-      const result = Math.sin(parseFloat(inputText.value) * Math.PI / 180); 
-      outputText.value = result;
-    } else if (value === 'cos') {
-      const result = Math.cos(parseFloat(inputText.value) * Math.PI / 180); 
-      outputText.value = result;
-    } else if (value === 'tan') {
-      const result = Math.tan(parseFloat(inputText.value) * Math.PI / 180); 
-      outputText.value = result;
-    } else {
-      inputText.value += value;
+      outputText.value = result; // 显示计算结果
+    } 
+    // 当点击 'sin' 按钮时计算输入值的正弦值
+    else if (value === 'sin') {
+      const result = Math.sin(parseFloat(inputText.value) * Math.PI / 180); // 计算正弦值
+      outputText.value = result; // 显示计算结果
+    } 
+    // 当点击 'cos' 按钮时计算输入值的余弦值
+    else if (value === 'cos') {
+      const result = Math.cos(parseFloat(inputText.value) * Math.PI / 180); // 计算余弦值
+      outputText.value = result; // 显示计算结果
+    } 
+    // 当点击 'tan' 按钮时计算输入值的正切值
+    else if (value === 'tan') {
+      const result = Math.tan(parseFloat(inputText.value) * Math.PI / 180); // 计算正切值
+      outputText.value = result; // 显示计算结果
+    } 
+    // 否则将按钮的值追加到输入字段中
+    else {
+      inputText.value += value; // 追加按钮值到输入字段
     }
   });
 });
